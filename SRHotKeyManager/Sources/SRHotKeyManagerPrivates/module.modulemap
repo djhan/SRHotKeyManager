@@ -1,0 +1,4 @@
+module SRHotKeyManagerPrivates {
+    header "../SRHotKeyManagerImpl.h"
+    export *
+}
