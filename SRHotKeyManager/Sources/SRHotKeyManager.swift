@@ -8,6 +8,7 @@
 //
 
 import Cocoa
+import SRHotKeyManagerPrivates
 
 public class SRHotKey: CustomStringConvertible {
     private let impl: SRHotKeyImpl
