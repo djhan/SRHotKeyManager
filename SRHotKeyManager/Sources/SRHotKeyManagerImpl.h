@@ -27,8 +27,8 @@ typedef void (^SRGlobalHotKeyImplHandler)();
 @property (nonatomic, assign) BOOL control;
 @property (nonatomic, assign) BOOL option;
 @property (nonatomic, assign) BOOL shift;
-@property (nonatomic, assign) UInt32 keyCode;
-- (id)initWithKeyCode:(UInt32)keyCode command:(BOOL)command control:(BOOL)control option:(BOOL)option shift:(BOOL)shift;
+@property (nonatomic, assign) UInt16 keyCode;
+- (id)initWithKeyCode:(UInt16)keyCode command:(BOOL)command control:(BOOL)control option:(BOOL)option shift:(BOOL)shift;
 @end
 
 @class SRGlobalHotKeyManagerImpl;
