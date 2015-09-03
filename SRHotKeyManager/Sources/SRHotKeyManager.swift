@@ -10,7 +10,7 @@
 import Cocoa
 import SRHotKeyManagerPrivates
 
-public class SRHotKey: CustomStringConvertible {
+public class SRHotKey: CustomDebugStringConvertible {
     private let impl: SRHotKeyImpl
     
     private init(impl: SRHotKeyImpl) {
@@ -45,7 +45,7 @@ public class SRHotKey: CustomStringConvertible {
                     shift: event.modifierFlags.contains(.ShiftKeyMask))
     }
     
-    public var description: String {
+    public var debugDescription: String {
         var result = "<SRHotKey"
         
         if self.command { result = result + " [CMD]" }
@@ -53,7 +53,7 @@ public class SRHotKey: CustomStringConvertible {
         if self.option { result = result + " [OPT]" }
         if self.shift { result = result + " [SHT]" }
         
-        result = result + " [\(self.keyCode)]>"
+        result = result + " \(self.characters)(\(self.keyCode))>"
         
         return result
     }
