@@ -15,16 +15,32 @@
 #import <Carbon/Carbon.h>
 
 #define BOOLSTR(bv) ((bv) ? @"true":@"false")
+#define SRHotKeyConvertorDefaultStringLength    4
 
-#pragma mark - SRHotKey Class
+/** This code not works when I testing... :-(
+NSString *stringFromKeyCode(UInt16 keyCode) {
+    TISInputSourceRef keyboard = TISCopyCurrentKeyboardInputSource();
+    CFDataRef unicodeLayout = TISGetInputSourceProperty(keyboard, kTISPropertyUnicodeKeyLayoutData);
+    UCKeyboardLayout *layout = (UCKeyboardLayout *)CFDataGetBytePtr(unicodeLayout);
+    
+    UInt32 deadKeyState = 0;
+    UniChar characters[SRHotKeyConvertorDefaultStringLength];
+    UniCharCount length;
+    UCKeyTranslate(layout, keyCode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit, &deadKeyState, sizeof(characters) / sizeof(characters[0]), &length, characters);
+    
+    return (__bridge NSString *)CFStringCreateWithCharacters(kCFAllocatorDefault, characters, 1);
+}
+*/
+
+#pragma mark - SRHotKey Implementation Class
 
 @interface SRHotKeyImpl ()
-@property (nonatomic, readonly) UInt32 modifiers;
+@property (nonatomic, readonly) UInt16 modifiers;
 @end
 
 @implementation SRHotKeyImpl
 
-- (id)initWithKeyCode:(UInt32)keyCode command:(BOOL)command control:(BOOL)control option:(BOOL)option shift:(BOOL)shift {
+- (id)initWithKeyCode:(UInt16)keyCode command:(BOOL)command control:(BOOL)control option:(BOOL)option shift:(BOOL)shift {
     self = [super init];
     if (self) {
         self.keyCode = keyCode;
@@ -36,8 +52,8 @@
     return self;
 }
 
-- (UInt32)modifiers {
-    UInt32 result = 0;
+- (UInt16)modifiers {
+    UInt16 result = 0;
     
     if (self.command) result += cmdKey;
     if (self.control) result += controlKey;
@@ -53,7 +69,7 @@
 
 @end
 
-#pragma mark - SRGlobalHotKeyManagerImpl Class
+#pragma mark - SRGlobalHotKeyManager Implementation Class
 
 @interface SRGlobalHotKeyManagerImpl ()
 @property (nonatomic, strong) SRHotKeyImpl *hotKey;

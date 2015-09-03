@@ -21,10 +21,28 @@ public class SRHotKey: CustomStringConvertible {
     public var control: Bool { return self.impl.control }
     public var option: Bool { return self.impl.option }
     public var shift: Bool { return self.impl.shift }
-    public var keyCode: UInt32 { return self.impl.keyCode }
+    public var keyCode: UInt16 { return self.impl.keyCode }
+    public var characters: String?
     
-    public init(keyCode: UInt32, command: Bool, control: Bool, option: Bool, shift: Bool) {
+    public init(keyCode: UInt16, command: Bool, control: Bool, option: Bool, shift: Bool) {
+        self.characters = SRKeyMap.virtualMap.string(keyCode)
         self.impl = SRHotKeyImpl(keyCode: keyCode, command: command, control: control, option: option, shift: shift)
+    }
+
+    public convenience init(keyString: String, command: Bool, control: Bool, option: Bool, shift: Bool) {
+        let keyCode = SRKeyMap.virtualMap.keyCode(keyString)!
+        self.init(keyCode: keyCode, command: command, control: control, option: option, shift: shift)
+    }
+
+    /**
+    Initialize with NSEvent(eg. You can use this class from keyDown or keyUp handler)
+    */
+    public convenience init(event: NSEvent) {
+        self.init(keyCode: event.keyCode,
+                  command: event.modifierFlags.contains(.CommandKeyMask),
+                  control: event.modifierFlags.contains(.ControlKeyMask),
+                   option: event.modifierFlags.contains(.AlternateKeyMask),
+                    shift: event.modifierFlags.contains(.ShiftKeyMask))
     }
     
     public var description: String {
@@ -57,6 +75,7 @@ public class SRGlobalHotKeyManager: SRGlobalHotKeyManagerImplDelegate {
     
     public func register(hotKey: SRHotKey, delegate: SRGlobalHotKeyManagerDelegate) {
         self.hotKey = hotKey
+        self.delegate = delegate
         self.impl.registerWithHotKey(hotKey.impl, delegate: self)
     }
     

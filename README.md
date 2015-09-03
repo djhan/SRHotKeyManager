@@ -6,7 +6,8 @@ The Module for Hot Key Management.
 ## SRHotKey
 
 <pre>
-let hotKey = SRHotKey(keyCode: UInt32(kVK_Space), command: true, control: true, option: true, shift: false)
+let keyCode = SRKeyMap.virtualMap.keyCode(" ") // Space
+let hotKey = SRHotKey(keyCode: keyCode, command: true, control: true, option: true, shift: false)
 </pre>
 
 ## SRGlobalHotKeyManager
@@ -27,4 +28,4 @@ TODO: No Implementations in currently. ;-)
 
 # NOTE
 
-This framework not tested yes ;-p
+This framework not tested yet ;-p
