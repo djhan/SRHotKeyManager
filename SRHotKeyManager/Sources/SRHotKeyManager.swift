@@ -53,7 +53,13 @@ public class SRHotKey: CustomDebugStringConvertible {
         if self.option { result = result + " [OPT]" }
         if self.shift { result = result + " [SHT]" }
         
-        result = result + " \(self.characters)(\(self.keyCode))>"
+        if let c = self.characters {
+            result = result + " '\(c)'"
+        } else {
+            result = result + " UNKNOWN"
+        }
+        
+        result = result + "(\(self.keyCode))>"
         
         return result
     }
