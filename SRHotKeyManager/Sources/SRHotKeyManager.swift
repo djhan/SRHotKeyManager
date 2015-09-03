@@ -22,15 +22,15 @@ public class SRHotKey: CustomStringConvertible {
     public var option: Bool { return self.impl.option }
     public var shift: Bool { return self.impl.shift }
     public var keyCode: UInt16 { return self.impl.keyCode }
+    public var characters: String?
     
     public init(keyCode: UInt16, command: Bool, control: Bool, option: Bool, shift: Bool) {
+        self.characters = SRKeyMap.virtualMap.string(keyCode)
         self.impl = SRHotKeyImpl(keyCode: keyCode, command: command, control: control, option: option, shift: shift)
     }
 
     public convenience init(keyString: String, command: Bool, control: Bool, option: Bool, shift: Bool) {
-        // FIXME: Incorrect Code.
-        let keyCode = UInt16(keyString.utf16[keyString.utf16.startIndex])
-        debugPrint("SRHotKey Initializing with keyString[\(keyString)(\(keyCode))]")
+        let keyCode = SRKeyMap.virtualMap.keyCode(keyString)!
         self.init(keyCode: keyCode, command: command, control: control, option: option, shift: shift)
     }
 
@@ -75,6 +75,7 @@ public class SRGlobalHotKeyManager: SRGlobalHotKeyManagerImplDelegate {
     
     public func register(hotKey: SRHotKey, delegate: SRGlobalHotKeyManagerDelegate) {
         self.hotKey = hotKey
+        self.delegate = delegate
         self.impl.registerWithHotKey(hotKey.impl, delegate: self)
     }
     

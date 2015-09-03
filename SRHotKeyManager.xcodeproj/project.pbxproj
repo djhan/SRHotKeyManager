@@ -11,6 +11,7 @@
 		8A47D6C91B6F5748004CA762 /* SRHotKeyManagerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47D6C71B6F5748004CA762 /* SRHotKeyManagerImpl.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8A47D6CA1B6F5748004CA762 /* SRHotKeyManagerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47D6C81B6F5748004CA762 /* SRHotKeyManagerImpl.m */; };
 		8A47D6CC1B6F58E9004CA762 /* SRHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47D6CB1B6F58E9004CA762 /* SRHotKeyManager.swift */; };
+		8A54AD661B981F2C00D01984 /* SRKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54AD651B981F2C00D01984 /* SRKeyMap.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		8A47D6CB1B6F58E9004CA762 /* SRHotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRHotKeyManager.swift; sourceTree = "<group>"; };
 		8A47D72C1B7327FE004CA762 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		8A54AD501B96A30B00D01984 /* SRHotKeyManagerDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SRHotKeyManagerDemo.xcodeproj; path = Demo/SRHotKeyManagerDemo/SRHotKeyManagerDemo.xcodeproj; sourceTree = "<group>"; };
+		8A54AD651B981F2C00D01984 /* SRKeyMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRKeyMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				8A47D6C71B6F5748004CA762 /* SRHotKeyManagerImpl.h */,
 				8A47D6C81B6F5748004CA762 /* SRHotKeyManagerImpl.m */,
 				8A47D6CB1B6F58E9004CA762 /* SRHotKeyManager.swift */,
+				8A54AD651B981F2C00D01984 /* SRKeyMap.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			files = (
 				8A47D6CC1B6F58E9004CA762 /* SRHotKeyManager.swift in Sources */,
 				8A47D6CA1B6F5748004CA762 /* SRHotKeyManagerImpl.m in Sources */,
+				8A54AD661B981F2C00D01984 /* SRKeyMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
