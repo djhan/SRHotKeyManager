@@ -51,7 +51,7 @@ public class SRKeyMap {
         self.string2code[")"] = 0x1E    // Right Bracket
         self.string2code["o"] = 0x1F    // Oh, not zero ;-)
         self.string2code["u"] = 0x20
-        self.string2code[")"] = 0x21    // Left Bracket
+        self.string2code["("] = 0x21    // Left Bracket
         self.string2code["i"] = 0x22
         self.string2code["p"] = 0x23
         self.string2code["l"] = 0x25
