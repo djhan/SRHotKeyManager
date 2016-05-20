@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../SRHotKeyManager.xcodeproj">
+      location = "group:SRHotKeyManager/SRHotKeyManager.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SRHotKeyManagerDemo/SRHotKeyManagerDemo.xcodeproj">
+      location = "group:Demo/SRHotKeyManagerDemo.xcodeproj">
    </FileRef>
 </Workspace>

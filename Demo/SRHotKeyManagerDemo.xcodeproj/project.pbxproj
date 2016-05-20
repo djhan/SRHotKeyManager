@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A04B1761CEEFE9C0072DED4 /* SRHotKeyManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A04B1751CEEFE9C0072DED4 /* SRHotKeyManager.framework */; };
+		8A04B1771CEEFE9C0072DED4 /* SRHotKeyManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A04B1751CEEFE9C0072DED4 /* SRHotKeyManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A54AD2B1B96A29700D01984 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54AD2A1B96A29700D01984 /* AppDelegate.swift */; };
 		8A54AD2D1B96A29700D01984 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54AD2C1B96A29700D01984 /* ViewController.swift */; };
 		8A54AD2F1B96A29700D01984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A54AD2E1B96A29700D01984 /* Assets.xcassets */; };
 		8A54AD321B96A29700D01984 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A54AD301B96A29700D01984 /* Main.storyboard */; };
 		8A54AD3D1B96A29700D01984 /* SRHotKeyManagerDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54AD3C1B96A29700D01984 /* SRHotKeyManagerDemoTests.swift */; };
-		8A54AD601B96A34B00D01984 /* SRHotKeyManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A54AD5F1B96A32800D01984 /* SRHotKeyManager.framework */; };
-		8A54AD611B96A34B00D01984 /* SRHotKeyManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A54AD5F1B96A32800D01984 /* SRHotKeyManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,20 +24,6 @@
 			remoteGlobalIDString = 8A54AD261B96A29700D01984;
 			remoteInfo = SRHotKeyManagerDemo;
 		};
-		8A54AD5E1B96A32800D01984 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A54AD5A1B96A32800D01984 /* SRHotKeyManager.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8A47D6BB1B6F5710004CA762;
-			remoteInfo = SRHotKeyManager;
-		};
-		8A54AD621B96A34B00D01984 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A54AD5A1B96A32800D01984 /* SRHotKeyManager.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A47D6BA1B6F5710004CA762;
-			remoteInfo = SRHotKeyManager;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8A54AD611B96A34B00D01984 /* SRHotKeyManager.framework in Embed Frameworks */,
+				8A04B1771CEEFE9C0072DED4 /* SRHotKeyManager.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A04B1751CEEFE9C0072DED4 /* SRHotKeyManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SRHotKeyManager.framework; path = "/Users/hirenn/Library/Developer/Xcode/DerivedData/SRHotKeyManager-bnzkyrsngfqunvfgocjofzfjbewx/Build/Products/Debug/SRHotKeyManager.framework"; sourceTree = "<absolute>"; };
 		8A54AD271B96A29700D01984 /* SRHotKeyManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRHotKeyManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A54AD2A1B96A29700D01984 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A54AD2C1B96A29700D01984 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +51,6 @@
 		8A54AD381B96A29700D01984 /* SRHotKeyManagerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SRHotKeyManagerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A54AD3C1B96A29700D01984 /* SRHotKeyManagerDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRHotKeyManagerDemoTests.swift; sourceTree = "<group>"; };
 		8A54AD3E1B96A29700D01984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A54AD5A1B96A32800D01984 /* SRHotKeyManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SRHotKeyManager.xcodeproj; path = ../../SRHotKeyManager.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A54AD601B96A34B00D01984 /* SRHotKeyManager.framework in Frameworks */,
+				8A04B1761CEEFE9C0072DED4 /* SRHotKeyManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +75,7 @@
 		8A54AD1E1B96A29700D01984 = {
 			isa = PBXGroup;
 			children = (
-				8A54AD5A1B96A32800D01984 /* SRHotKeyManager.xcodeproj */,
+				8A04B1751CEEFE9C0072DED4 /* SRHotKeyManager.framework */,
 				8A54AD291B96A29700D01984 /* SRHotKeyManagerDemo */,
 				8A54AD3B1B96A29700D01984 /* SRHotKeyManagerDemoTests */,
 				8A54AD281B96A29700D01984 /* Products */,
@@ -126,14 +112,6 @@
 			path = SRHotKeyManagerDemoTests;
 			sourceTree = "<group>";
 		};
-		8A54AD5B1B96A32800D01984 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8A54AD5F1B96A32800D01984 /* SRHotKeyManager.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,7 +127,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8A54AD631B96A34B00D01984 /* PBXTargetDependency */,
 			);
 			name = SRHotKeyManagerDemo;
 			productName = SRHotKeyManagerDemo;
@@ -203,12 +180,6 @@
 			mainGroup = 8A54AD1E1B96A29700D01984;
 			productRefGroup = 8A54AD281B96A29700D01984 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8A54AD5B1B96A32800D01984 /* Products */;
-					ProjectRef = 8A54AD5A1B96A32800D01984 /* SRHotKeyManager.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8A54AD261B96A29700D01984 /* SRHotKeyManagerDemo */,
@@ -216,16 +187,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8A54AD5F1B96A32800D01984 /* SRHotKeyManager.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SRHotKeyManager.framework;
-			remoteRef = 8A54AD5E1B96A32800D01984 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8A54AD251B96A29700D01984 /* Resources */ = {
@@ -271,11 +232,6 @@
 			isa = PBXTargetDependency;
 			target = 8A54AD261B96A29700D01984 /* SRHotKeyManagerDemo */;
 			targetProxy = 8A54AD391B96A29700D01984 /* PBXContainerItemProxy */;
-		};
-		8A54AD631B96A34B00D01984 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SRHotKeyManager;
-			targetProxy = 8A54AD621B96A34B00D01984 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
