@@ -20,6 +20,7 @@ UInt16 ModifiersFromKeys(BOOL command, BOOL control, BOOL option, BOOL shift);
 
 + (SRGlobalHotKeyManagerImpl *)sharedManager;
 - (void)registerWithKeyCode:(UInt16)keyCode modifiers:(UInt16)modifiers handler:(SRGlobalHotKeyImplHandler)handler;
+- (void)unregisterHotKey;
 
 @end
 

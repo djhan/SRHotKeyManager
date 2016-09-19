@@ -22,4 +22,8 @@ public class SRGlobalHotKeyManager {
     }
   }
   
+  public func stop() {
+    self.impl!.unregisterHotKey()
+  }
+  
 }
