@@ -13,7 +13,7 @@ private let SRKeyEventRightArrowKeyCode = SRKeyMap.shared.keyCode(string: "right
 private let SRKeyEventUpArrowKeyCode = SRKeyMap.shared.keyCode(string: "uparrow")
 private let SRKeyEventDownArrowKeyCode = SRKeyMap.shared.keyCode(string: "downarrow")
 
-public struct SRKeyEvent {
+public struct SRKeyEvent: CustomStringConvertible {
   
   public let event: NSEvent
   
@@ -31,6 +31,14 @@ public struct SRKeyEvent {
     let keyCode = SRKeyMap.shared.keyCode(string: keyString)!
     
     self.event = NSEvent.keyEvent(with: NSKeyDown, location: NSPoint(), modifierFlags: flags, timestamp: 0, windowNumber: 0, context: nil, characters: "", charactersIgnoringModifiers: "", isARepeat: false, keyCode: keyCode)!
+  }
+  
+  public var keyCode: UInt16 {
+    return self.event.keyCode
+  }
+  
+  public var keyString: String {
+    return SRKeyMap.shared.string(keyCode: self.keyCode)!
   }
   
   public var pressingCommand: Bool {
@@ -73,4 +81,16 @@ public struct SRKeyEvent {
     return event.keyCode == SRKeyMap.shared.keyCode(string: keyString.lowercased())
   }
   
+  private let stringForCommand = "\u{2318}"
+  private let stringForControl = "^"
+  private let stringForOption = "\u{2325}"
+  private let stringForShift = "\u{21E7}"
+  
+  public var description: String {
+    return (self.pressingControl ? self.stringForControl : "") +
+      (self.pressingShift ? self.stringForShift : "") +
+      (self.pressingOption ? self.stringForOption : "") +
+      (self.pressingCommand ? self.stringForCommand : "") +
+      self.keyString.uppercased()
+  }
 }
