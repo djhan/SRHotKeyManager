@@ -1,7 +1,7 @@
 SRHotKeyManager
 ===============
 
-The frameworks to handling keyboard events and managing hotkey.
+The frameworks to handling keyboard events and managing hotkey. This framework requies Swift 3 and Xcode 8.
 
 ## SRKeyEvent
 
@@ -39,7 +39,7 @@ SRLocalHotKeyManager.shared.start()
 
 ## SRGlobalHotKeyManager
 
-If your app requires hot key when not focusing, use this.
+If your app requires hot key to trigger when app not focusing, use this.
 
 ```Swift
 let keyEvent = SRKeyEvent(keyString: "A", command: true)
