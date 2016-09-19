@@ -11,6 +11,8 @@ import Cocoa
 import SRHotKeyManagerPrivates
 
 
+
+/*
 public class SRHotKeyManager {
     public static let sharedManager: SRHotKeyManager = SRHotKeyManager()
 }
@@ -38,3 +40,4 @@ public class SRGlobalHotKeyManager: SRGlobalHotKeyManagerImplDelegate {
     }
 }
 
+*/

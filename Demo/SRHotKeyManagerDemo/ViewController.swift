@@ -9,24 +9,18 @@
 import Cocoa
 import SRHotKeyManager
 
-class ViewController: NSViewController, SRGlobalHotKeyManagerDelegate {
+class ViewController: NSViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
+    let keyEvent = SRKeyEvent(keyString: "O", command: true, control: true, option: true, shift: false)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let hotkey = SRHotKey(keyString: "O", command: true, control: true, option: true, shift: false)
-        SRGlobalHotKeyManager.sharedManager.register(hotkey, delegate: self)
+    SRGlobalHotKeyManager.shared.start(keyEvent: keyEvent) { 
+      print("Global Hot Key Pressed: \(keyEvent)")
     }
-
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-    func detectGlobalHotKeyPressing(hotKey: SRHotKey) {
-        print("BEEP!")
-    }
+  }
+  
 }
 
