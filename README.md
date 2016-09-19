@@ -1,37 +1,50 @@
 SRHotKeyManager
 ===============
 
-The Module for Hot Key Management.
+The Frameworks for Handling Key Event and Hot Key Management.
 
-## SRHotKey
+## SRKeyEvent
+
+Simple structure to support key event more easily.
 
 ```Swift
-// Generate Hot Key Instance: Command-Control-Option-Space
-if let keyCode = SRKeyMap.virtualMap.keyCode(" ") {
-    let hotKey = SRHotKey(keyCode: keyCode, command: true, control: true, option: true, shift: false)
-    ...
+let keyEvent = SRKeyEvent(keyString: "A")
+let anotherKey = SRKeyEvent(keyString: "O", command: true, control: false, option: false, shift: false)
+```
+
+## SRKeyMap
+
+SRKeyMap provides Key mapping informations.
+
+```Swift
+let code = SRKeyMap.shared.keyCode(string: "A")
+let string = SRKeyMap.shared.string(keyCode: someNSEvent.keyCode)!
+```
+
+## SRLocalHotKeyManager
+
+Handle keyboard input from your app more easily.
+
+```Swift
+SRLocalHotKeyManager.shared.addKeyEventHandler(instance: self) {
+  (keyEvent) in
+  print("some key event occured \(keyEvent)
 }
+SRLocalHotKeyManager.notifyLastInstanceOnly = true
+SRLocalHotKeyManager.shared.start()
 ```
 
 ## SRGlobalHotKeyManager
 
+Support global hotkey. eg. if your app was not focused, but your app notify single hot key.
+
 ```Swift
-func init() {
-    ...
-    SRGlobalHotKeyManager.sharedManager.register(hotKey, delegate: self)
-}
-
-...
-
-func detectGlobalHotKeyPressing(hotKey: SRHotKey) {
-    println("Global Hot Key Pressed: \(hotKey)")
+let keyEvent = SRKeyEvent(keyString: "A", command: true)
+SRGlobalHotKeyManager.shared.start(keyEvent: keyEvent) {
+  print("global hot key pressed")
 }
 ```
 
-## SRHotKeyManager
+## NOTE
 
-TODO: No Implementations in currently. ;-)
-
-# NOTE
-
-This framework not tested yet ;-p
+This framework not fully tested yet ;-)
