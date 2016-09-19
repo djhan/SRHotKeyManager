@@ -7,24 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A04B1791CEEFF070072DED4 /* SRHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04B1781CEEFF070072DED4 /* SRHotKey.swift */; };
 		8A47D6BF1B6F5710004CA762 /* SRHotKeyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47D6BE1B6F5710004CA762 /* SRHotKeyManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A47D6C91B6F5748004CA762 /* SRHotKeyManagerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47D6C71B6F5748004CA762 /* SRHotKeyManagerImpl.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8A47D6CA1B6F5748004CA762 /* SRHotKeyManagerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A47D6C81B6F5748004CA762 /* SRHotKeyManagerImpl.m */; };
-		8A47D6CC1B6F58E9004CA762 /* SRHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47D6CB1B6F58E9004CA762 /* SRHotKeyManager.swift */; };
 		8A54AD661B981F2C00D01984 /* SRKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54AD651B981F2C00D01984 /* SRKeyMap.swift */; };
+		8A97CD5D1D8F7FEC00BDA5D7 /* SRKeyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97CD5C1D8F7FEC00BDA5D7 /* SRKeyEvent.swift */; };
+		8A97CD5F1D8F80A600BDA5D7 /* SRLocalHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97CD5E1D8F80A600BDA5D7 /* SRLocalHotKeyManager.swift */; };
+		8A97CD611D8F881400BDA5D7 /* SRGlobalHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97CD601D8F881400BDA5D7 /* SRGlobalHotKeyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A04B1781CEEFF070072DED4 /* SRHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRHotKey.swift; sourceTree = "<group>"; };
 		8A47D6BB1B6F5710004CA762 /* SRHotKeyManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SRHotKeyManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A47D6BE1B6F5710004CA762 /* SRHotKeyManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRHotKeyManager.h; sourceTree = "<group>"; };
 		8A47D6C01B6F5710004CA762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A47D6C71B6F5748004CA762 /* SRHotKeyManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRHotKeyManagerImpl.h; sourceTree = "<group>"; };
 		8A47D6C81B6F5748004CA762 /* SRHotKeyManagerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRHotKeyManagerImpl.m; sourceTree = "<group>"; };
-		8A47D6CB1B6F58E9004CA762 /* SRHotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRHotKeyManager.swift; sourceTree = "<group>"; };
 		8A47D72C1B7327FE004CA762 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		8A54AD651B981F2C00D01984 /* SRKeyMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRKeyMap.swift; sourceTree = "<group>"; };
+		8A97CD5C1D8F7FEC00BDA5D7 /* SRKeyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRKeyEvent.swift; sourceTree = "<group>"; };
+		8A97CD5E1D8F80A600BDA5D7 /* SRLocalHotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRLocalHotKeyManager.swift; sourceTree = "<group>"; };
+		8A97CD601D8F881400BDA5D7 /* SRGlobalHotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SRGlobalHotKeyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +72,10 @@
 				8A47D72B1B7327FE004CA762 /* SRHotKeyManagerPrivates */,
 				8A47D6C71B6F5748004CA762 /* SRHotKeyManagerImpl.h */,
 				8A47D6C81B6F5748004CA762 /* SRHotKeyManagerImpl.m */,
-				8A47D6CB1B6F58E9004CA762 /* SRHotKeyManager.swift */,
+				8A97CD5E1D8F80A600BDA5D7 /* SRLocalHotKeyManager.swift */,
+				8A97CD601D8F881400BDA5D7 /* SRGlobalHotKeyManager.swift */,
+				8A97CD5C1D8F7FEC00BDA5D7 /* SRKeyEvent.swift */,
 				8A54AD651B981F2C00D01984 /* SRKeyMap.swift */,
-				8A04B1781CEEFF070072DED4 /* SRHotKey.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -125,11 +128,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Seorenn;
 				TargetAttributes = {
 					8A47D6BA1B6F5710004CA762 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -165,9 +169,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A47D6CC1B6F58E9004CA762 /* SRHotKeyManager.swift in Sources */,
+				8A97CD611D8F881400BDA5D7 /* SRGlobalHotKeyManager.swift in Sources */,
 				8A47D6CA1B6F5748004CA762 /* SRHotKeyManagerImpl.m in Sources */,
-				8A04B1791CEEFF070072DED4 /* SRHotKey.swift in Sources */,
+				8A97CD5D1D8F7FEC00BDA5D7 /* SRKeyEvent.swift in Sources */,
+				8A97CD5F1D8F80A600BDA5D7 /* SRLocalHotKeyManager.swift in Sources */,
 				8A54AD661B981F2C00D01984 /* SRKeyMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,8 +193,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -237,8 +244,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -259,6 +268,7 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/SRHotKeyManager/Sources";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -282,6 +292,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -301,6 +312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seorenn.SRHotKeyManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

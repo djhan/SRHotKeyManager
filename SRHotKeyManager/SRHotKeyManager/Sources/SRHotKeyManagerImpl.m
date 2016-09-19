@@ -17,78 +17,33 @@
 #define BOOLSTR(bv) ((bv) ? @"true":@"false")
 #define SRHotKeyConvertorDefaultStringLength    4
 
-/** This code not works when I testing... :-(
-NSString *stringFromKeyCode(UInt16 keyCode) {
-    TISInputSourceRef keyboard = TISCopyCurrentKeyboardInputSource();
-    CFDataRef unicodeLayout = TISGetInputSourceProperty(keyboard, kTISPropertyUnicodeKeyLayoutData);
-    UCKeyboardLayout *layout = (UCKeyboardLayout *)CFDataGetBytePtr(unicodeLayout);
-    
-    UInt32 deadKeyState = 0;
-    UniChar characters[SRHotKeyConvertorDefaultStringLength];
-    UniCharCount length;
-    UCKeyTranslate(layout, keyCode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit, &deadKeyState, sizeof(characters) / sizeof(characters[0]), &length, characters);
-    
-    return (__bridge NSString *)CFStringCreateWithCharacters(kCFAllocatorDefault, characters, 1);
+UInt16 ModifiersFromKeys(BOOL command, BOOL control, BOOL option, BOOL shift) {
+  UInt16 result = 0;
+  
+  if (command) result += cmdKey;
+  if (control) result += controlKey;
+  if (option) result += optionKey;
+  if (shift) result += shiftKey;
+  
+  return result;
 }
-*/
-
-#pragma mark - SRHotKey Implementation Class
-
-@interface SRHotKeyImpl ()
-@property (nonatomic, readonly) UInt16 modifiers;
-@end
-
-@implementation SRHotKeyImpl
-
-- (id)initWithKeyCode:(UInt16)keyCode command:(BOOL)command control:(BOOL)control option:(BOOL)option shift:(BOOL)shift {
-    self = [super init];
-    if (self) {
-        self.keyCode = keyCode;
-        self.command = command;
-        self.control = control;
-        self.option = option;
-        self.shift = shift;
-    }
-    return self;
-}
-
-- (UInt16)modifiers {
-    UInt16 result = 0;
-    
-    if (self.command) result += cmdKey;
-    if (self.control) result += controlKey;
-    if (self.option) result += optionKey;
-    if (self.shift) result += shiftKey;
-    
-    return result;
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"<SRHotKey Command[%@] Control[%@] Option[%@] Shift[%@] Code[%d]>", BOOLSTR(self.command), BOOLSTR(self.control), BOOLSTR(self.option), BOOLSTR(self.shift), self.keyCode];
-}
-
-@end
 
 #pragma mark - SRGlobalHotKeyManager Implementation Class
 
 @interface SRGlobalHotKeyManagerImpl ()
-@property (nonatomic, strong) SRHotKeyImpl *hotKey;
+
 @property (nonatomic, strong) SRGlobalHotKeyImplHandler handler;
-@property (nonatomic, strong) id<SRGlobalHotKeyManagerImplDelegate> delegate;
+
 @end
 
 OSStatus SRGlobalHotKeyManagerImplHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData) {
-    //SRGlobalHotKeyManagerImpl *manager = [SRGlobalHotKeyManagerImpl sharedManager];
-    SRGlobalHotKeyManagerImpl *manager = (__bridge SRGlobalHotKeyManagerImpl *)userData;
-    
-    if (manager.delegate) {
-        [manager.delegate globalHotKeyManagerImpl:manager detectPressingHotKey:manager.hotKey];
-    }
-    else if (manager.handler) {
-        manager.handler();
-    }
-
-    return noErr;
+  SRGlobalHotKeyManagerImpl *manager = (__bridge SRGlobalHotKeyManagerImpl *)userData;
+  
+  if (manager.handler) {
+    manager.handler();
+  }
+  
+  return noErr;
 }
 
 EventHotKeyRef g_hotKeyRef;
@@ -96,62 +51,41 @@ EventHotKeyRef g_hotKeyRef;
 @implementation SRGlobalHotKeyManagerImpl
 
 + (SRGlobalHotKeyManagerImpl *)sharedManager {
-    static SRGlobalHotKeyManagerImpl *instance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[SRGlobalHotKeyManagerImpl alloc] init];
-    });
-    return instance;
+  static SRGlobalHotKeyManagerImpl *instance = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    instance = [[SRGlobalHotKeyManagerImpl alloc] init];
+  });
+  return instance;
 }
 
 - (id)init {
-    self = [super init];
-    if (self) {
-        EventTypeSpec eventType;
-        eventType.eventClass = kEventClassKeyboard;
-        eventType.eventKind = kEventHotKeyPressed;
-        
-        //#define InstallApplicationEventHandler( handler, numTypes, list, userData, outHandlerRef ) \
-
-        InstallApplicationEventHandler(&SRGlobalHotKeyManagerImplHandler, 1, &eventType, (__bridge void *)self, NULL);
-    }
-    return self;
+  self = [super init];
+  if (self) {
+    EventTypeSpec eventType;
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind = kEventHotKeyPressed;
+    
+    InstallApplicationEventHandler(&SRGlobalHotKeyManagerImplHandler, 1, &eventType, (__bridge void *)self, NULL);
+  }
+  return self;
 }
 
-- (void)registerWithHotKey:(SRHotKeyImpl *)hotKey handler:(SRGlobalHotKeyImplHandler)handler {
-    self.hotKey = hotKey;
-    self.handler = handler;
-    
-    EventHotKeyID hotKeyID;
-    hotKeyID.signature = 'srgh';
-    hotKeyID.id = 0;
-    
-    RegisterEventHotKey(hotKey.keyCode, hotKey.modifiers, hotKeyID, GetApplicationEventTarget(), 0, &g_hotKeyRef);
-}
-
-- (void)registerWithHotKey:(SRHotKeyImpl *)hotKey delegate:(id<SRGlobalHotKeyManagerImplDelegate>)delegate {
-    self.hotKey = hotKey;
-    self.delegate = delegate;
-    
-    EventHotKeyID hotKeyID;
-    hotKeyID.signature = 'srgh';
-    hotKeyID.id = 0;
-    
-    RegisterEventHotKey(hotKey.keyCode, hotKey.modifiers, hotKeyID, GetApplicationEventTarget(), 0, &g_hotKeyRef);
+- (void)registerWithKeyCode:(UInt16)keyCode modifiers:(UInt16)modifiers handler:(SRGlobalHotKeyImplHandler)handler {
+  self.handler = handler;
+  
+  EventHotKeyID hotKeyID;
+  hotKeyID.signature = 'srgh';
+  hotKeyID.id = 0;
+  
+  RegisterEventHotKey(keyCode, modifiers, hotKeyID, GetApplicationEventTarget(), 0, &g_hotKeyRef);
 }
 
 - (void)unregisterHotKey {
-    UnregisterEventHotKey(g_hotKeyRef);
-    self.hotKey = nil;
-    self.handler = nil;
+  UnregisterEventHotKey(g_hotKeyRef);
+  self.handler = nil;
 }
 
-@end
-
-#pragma mark - SRHotKeyManagerImpl Class
-
-@implementation SRHotKeyManagerImpl
-// TODO
 @end
 
 #endif
